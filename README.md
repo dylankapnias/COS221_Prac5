@@ -4,5 +4,5 @@
 
 ## Group Members
 ```PHP
-$Dylan_Kapnias = new Student("u18108467");
+$DylanKapnias = new Student("u18108467");
 ```
