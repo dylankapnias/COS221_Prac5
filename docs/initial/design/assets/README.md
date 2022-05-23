@@ -1,1 +1,1 @@
-All images and styling files. Uploaded by Marie Pretorius u21565342
+All images and styling files. 
