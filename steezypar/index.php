@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,23 +81,6 @@
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                   <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
-                  <!--<div class="row mt-3">
-                    <div class="col-2 text-center ms-auto">
-                      <a class="btn btn-link px-3" href="javascript:;">
-                        <i class="fa fa-facebook text-white text-lg"></i>
-                      </a>
-                    </div>
-                    <div class="col-2 text-center px-1">
-                      <a class="btn btn-link px-3" href="javascript:;">
-                        <i class="fa fa-github text-white text-lg"></i>
-                      </a>
-                    </div>
-                    <div class="col-2 text-center me-auto">
-                      <a class="btn btn-link px-3" href="javascript:;">
-                        <i class="fa fa-google text-white text-lg"></i>
-                      </a>
-                    </div>
-                  </div>-->
                 </div>
               </div>
               <div class="card-body">
@@ -109,6 +96,13 @@
                   <div class="text-center">
                     <button name="submit" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
+                    <?php
+                    if (isset($_SESSION["u_id"])) {
+                        echo "<div class=\"text-center\">";
+                            echo "<button name=\"so_submit\" type=\"submit\" class=\"btn bg-gradient-primary w-100 my-4 mb-2\">Sign out " . $_SESSION["u_id"] . "</button>";
+                        echo "</div>";
+                    }
+                    ?>
                 </form>
               </div>
             </div>
