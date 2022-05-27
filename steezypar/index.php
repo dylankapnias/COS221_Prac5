@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +97,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start" action="pages/test.php" method="post">
+                <form role="form" class="text-start" action="assets/php/sign-in.php" method="post">
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Email</label>
                     <input name="email" type="email" class="form-control">
@@ -108,7 +107,7 @@
                     <input name="password" type="password" class="form-control">
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <button name="submit" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
                 </form>
               </div>
