@@ -96,13 +96,6 @@ session_start();
                   <div class="text-center">
                     <button name="submit" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
-                    <?php
-                    if (isset($_SESSION["u_id"])) {
-                        echo "<div class=\"text-center\">";
-                            echo "<button name=\"so_submit\" type=\"submit\" class=\"btn bg-gradient-primary w-100 my-4 mb-2\">Sign out " . $_SESSION["u_id"] . "</button>";
-                        echo "</div>";
-                    }
-                    ?>
                 </form>
               </div>
             </div>

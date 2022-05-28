@@ -1,12 +1,6 @@
 <?php
 require_once 'util/db-conn.php';
 
-if (isset($_POST["so_submit"])) {
-    require_once 'sign-out.php';
-    header("location: ../../index.php");
-    exit();
-}
-
 if (!isset($_POST["submit"])) {
     die("Please enter this page appropriately");
 }
@@ -27,7 +21,8 @@ $row = mysqli_fetch_assoc($resultData);
 if (count($row) === 1) {
     session_start();
     $_SESSION["u_id"] = $row["c_id"];
-    header("location: ../../index.php");
+    $_SESSION["s_in"] = true;
+    header("location: ../../pages/dashboard.php");
     exit();
 } else {
     header("location: ../../index.php?error=creds");
