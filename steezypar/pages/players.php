@@ -308,6 +308,9 @@
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Games Table</h6>
               </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Game</button>
+                </div>
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
