@@ -118,7 +118,8 @@ session_start();
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
                         <?php
-                        echo "<img src='../assets/uploads/" . $_SESSION["u_id"] . ".jpg' alt='profile_image' class='w-100 border-radius-lg shadow-sm'>";
+                        require '../assets/php/util/get-pic.php';
+                        echo "<img src='../assets/uploads/" . ($pic  == 0 ? 'default' : $_SESSION["u_id"]) . ".jpg' alt='profile_image' class='w-100 border-radius-lg shadow-sm'>";
                         ?>
                     </div>
                 </div>
@@ -133,11 +134,11 @@ session_start();
                     </div>
                 </div>
                 <div class="col-auto d-flex align-items-center justify-content-between">
-                    <form role="form" method="post" enctype="multipart/form-data">
+                    <form role="form" action="../assets/php/upload-profile.php" method="post" enctype="multipart/form-data">
                         <input type="file" name="profile_pic">
                         <?php
-                            require_once '../assets/php/util/get-pic.php';
-                            echo "<button type='submit' name='pic_submit' class='btn btn-outline-primary btn-sm mb-0'>" . ($pic_is_set == 0 ? 'Upload ' : 'Change ') . "profile picture</button>";
+                            require '../assets/php/util/get-pic.php';
+                            echo "<button type='submit' name='pic_submit' class='btn btn-outline-primary btn-sm mb-0'>" . ($pic  == 0 ? 'Upload ' : 'Change ') . "profile picture</button>";
                         ?>
                     </form>
                 </div>
