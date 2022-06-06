@@ -130,15 +130,15 @@ session_start();
                             echo $username;
                             ?>
                         </h5>
-                        <p class="mb-0 font-weight-normal text-sm">
-                            Player for Group 1
-                        </p>
                     </div>
                 </div>
                 <div class="col-auto d-flex align-items-center justify-content-between">
                     <form role="form" method="post" enctype="multipart/form-data">
                         <input type="file" name="profile_pic">
-                        <button type="submit" name="pic_submit" class="btn btn-outline-primary btn-sm mb-0">Upload profile picture</button>
+                        <?php
+                            require_once '../assets/php/util/get-pic.php';
+                            echo "<button type='submit' name='pic_submit' class='btn btn-outline-primary btn-sm mb-0'>" . ($pic_is_set == 0 ? 'Upload ' : 'Change ') . "profile picture</button>";
+                        ?>
                     </form>
                 </div>
             </div>

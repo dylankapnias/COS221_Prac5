@@ -5,14 +5,14 @@ if (!isset($_POST["submit"])) {
     die("Please enter this page appropriately");
 }
 
-$username = $_POST["email"];
+$email = $_POST["email"];
 $password = $_POST["password"];
 
-$sql = "SELECT player_id FROM playercredentials WHERE username = ? AND password = ?;";
+$sql = "SELECT player_id FROM playercredentials WHERE email = ? AND password = ?;";
 $stmt = mysqli_stmt_init($conn);
 
 mysqli_stmt_prepare($stmt, $sql);
-mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+mysqli_stmt_bind_param($stmt, "ss", $email, $password);
 mysqli_stmt_execute($stmt);
 
 $resultData = mysqli_stmt_get_result($stmt);
