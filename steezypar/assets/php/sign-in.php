@@ -8,7 +8,7 @@ if (!isset($_POST["submit"])) {
 $username = $_POST["email"];
 $password = $_POST["password"];
 
-$sql = "SELECT c_id FROM credentials WHERE username = ? AND password = ?;";
+$sql = "SELECT player_id FROM playercredentials WHERE username = ? AND password = ?;";
 $stmt = mysqli_stmt_init($conn);
 
 mysqli_stmt_prepare($stmt, $sql);
@@ -20,7 +20,7 @@ $row = mysqli_fetch_assoc($resultData);
 
 if (count($row) === 1) {
     session_start();
-    $_SESSION["u_id"] = $row["c_id"];
+    $_SESSION["u_id"] = $row["player_id"];
     $_SESSION["s_in"] = true;
     header("location: ../../pages/dashboard.php");
     exit();

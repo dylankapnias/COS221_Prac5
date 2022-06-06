@@ -143,6 +143,12 @@ session_start();
               </p>
             </div>
           </div>
+          <div class="col-auto d-flex align-items-center justify-content-between">
+            <form role="form" method="post" enctype="multipart/form-data">
+                <input type="file" name="profile_pic">
+                <button type="submit" name="pic_submit" class="btn btn-outline-primary btn-sm mb-0">Upload profile picture</button>
+            </form>
+          </div>
 
         <div class="row">
           <div class="row">
