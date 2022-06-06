@@ -72,9 +72,9 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
             <li class="nav-item">
                 <a class="nav-link text-white " href="sign-in.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">login</i>
+                        <i class="material-icons opacity-10">logout</i>
                     </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
+                    <span class="nav-link-text ms-1">Sign Out</span>
                 </a>
             </li>
         </ul>
