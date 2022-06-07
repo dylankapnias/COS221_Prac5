@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 </head>
-
 <body class="g-sidenav-show  bg-gray-200">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
@@ -55,7 +57,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/profile.php">
+                <a class="nav-link text-white " href="profile.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
@@ -63,7 +65,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/sign-in.php">
+                <a class="nav-link text-white " href="../assets/php/sign-out.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">logout</i>
                     </div>
@@ -105,7 +107,6 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100" style="background-image: url('../assets/img/background/1.jfif');">
             <span class="mask bg-gradient-dark opacity-6"></span>
@@ -119,26 +120,29 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" class="text-start">
-                                    <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Name</label>
-                                        <input id="name-input" class="form-control">
-                                    </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Surname</label>
-                                        <input id="surname-input" class="form-control">
-                                    </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Username</label>
-                                        <input id="username-input" class="form-control">
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Accept Changes</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Cancel</button>
-                                    </div>
-                                </form>
+                                <?php
+                                    echo "
+                                    <form role='form' class='text-start' action='../assets/php/change-profile.php' method='post'>
+                                        <div class='input-group input-group-outline my-3'>
+                                            <label class='form-label'>Name</label>
+                                            <input name='name_change' id='name-input' class='form-control'>
+                                        </div>
+                                        <div class='input-group input-group-outline mb-3'>
+                                            <label class='form-label'>Username</label>
+                                            <input name='username_change' id='username-input' class='form-control'>
+                                        </div>
+                                        <div class='input-group input-group-outline mb-3'>
+                                            <label class='form-label'>Email</label>
+                                            <input name='email_change' id='email-input' class='form-control'>
+                                        </div>
+                                        <div class='text-center'>
+                                            <button type='submit' name='change_profile' class='btn bg-gradient-primary w-100 my-4 mb-2'>Accept Changes</button>
+                                        </div>
+                                        <div class='text-center'>
+                                            <button type='submit' name='cancel_change' class='btn bg-gradient-primary w-100 my-4 mb-2'>Cancel</button>
+                                        </div>
+                                    </form>";
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -146,7 +150,6 @@
             </div>
         </div>
     </main>
-
     <div class="container-fluid py-4">
         <footer class="footer py-4  ">
             <div class="container-fluid">
@@ -246,5 +249,4 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
-
 </html>
