@@ -135,103 +135,13 @@
                                             <table class="table align-items-center mb-0">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Player</th>
-                                                    <th class="text-secondary opacity-7">
-
-                                                    </th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Players (min. 10)</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user3">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user4">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">Michael Levi</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user5">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">Richard Gran</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                                                            </div>
-                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
-                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                    require_once '../assets/php/create-add-table.php'
+                                                ?>
                                                 </tbody>
                                             </table>
                                         </div>
