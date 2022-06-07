@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" class="text-start">
+                                <form role="form" action="../assets/php/create-event.php" class="text-start" method="post">
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Location</label>
                                         <input name="location_in" id="location-input" class="form-control">
@@ -136,7 +135,7 @@
                                         <button type="submit" name="add_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Event</button>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" href="cancel_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Cancel</button>
+                                        <button type="submit" name="cancel_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Cancel</button>
                                     </div>
                                 </form>
                             </div>
