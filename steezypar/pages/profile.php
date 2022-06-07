@@ -201,7 +201,7 @@ if (!isset($_SESSION["u_id"])) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" class="text-start" method="post">
+                                <form role="form" class="text-start" action="../assets/php/capture-score.php" method="post">
                                     <div class="input-group input-group-outline my-3">
                                         <div class="dropdown">
                                             <?php
@@ -211,23 +211,31 @@ if (!isset($_SESSION["u_id"])) {
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Insert Score</label>
-                                        <input name="start_in" id="score-input" class="form-control">
+                                        <input name="total_score" id="score-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Par</label>
-                                        <input name="end_in" id="par-input" class="form-control">
+                                        <input name="total_par" id="par-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Birdies</label>
-                                        <input name="end_in" id="birdies-input" class="form-control">
+                                        <input name="total_birdie" id="birdies-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Eagles</label>
-                                        <input name="end_in" id="eagles-input" class="form-control">
+                                        <input name="total_eagle" id="eagles-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Bogeys</label>
-                                        <input name="end_in" id="bogeys-input" class="form-control">
+                                        <input name="total_bogey" id="bogeys-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Amount of Drives</label>
+                                        <input name="total_drive" id="drives-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Longest Drive</label>
+                                        <input name="total_distance" id="distance-input" class="form-control">
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" name="capture_score" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Score</button>
