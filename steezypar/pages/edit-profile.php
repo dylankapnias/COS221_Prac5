@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +21,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 </head>
-
 <body class="g-sidenav-show  bg-gray-200">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
@@ -105,7 +103,6 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100" style="background-image: url('../assets/img/background/1.jfif');">
             <span class="mask bg-gradient-dark opacity-6"></span>
@@ -132,6 +129,10 @@
                                         <label class="form-label">Username</label>
                                         <input id="username-input" class="form-control">
                                     </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Bio</label>
+                                        <input id="bio-input" class="form-control">
+                                    </div>
                                     <div class="text-center">
                                         <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Accept Changes</button>
                                     </div>
@@ -146,7 +147,6 @@
             </div>
         </div>
     </main>
-
     <div class="container-fluid py-4">
         <footer class="footer py-4  ">
             <div class="container-fluid">
@@ -246,5 +246,4 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
-
 </html>
