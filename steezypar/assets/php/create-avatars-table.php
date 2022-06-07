@@ -60,10 +60,23 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
     }
     echo "
             </div>
-        </td>
+        </td>";
+
+    $sql2 = "SELECT event_id, COUNT(player_id) AS TotalPlayers, SUM(average) AS AverageScore FROM playereventstats WHERE event_id = ?;";
+    $stmt2 = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt2, $sql2);
+    mysqli_stmt_bind_param($stmt2, "s", $event_id);
+    mysqli_stmt_execute($stmt2);
+
+    $resultData2 = mysqli_stmt_get_result($stmt2);
+    $row2 = mysqli_fetch_assoc($resultData2);
+    $average = round($row2["AverageScore"], 2);
+    echo "
         <td class='align-middle text-center text-sm'>
-            <span class='text-xs font-weight-bold'> 53 </span>
-        </td>
+            <span class='text-xs font-weight-bold'> " . $average . "</span>
+        </td>";
+    echo "
         <td class='align-middle'>
             <div class='progress-wrapper w-75 mx-auto'>
                 <div class='progress-info'>
