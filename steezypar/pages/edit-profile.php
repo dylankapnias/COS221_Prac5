@@ -121,18 +121,19 @@
                             </div>
                             <div class="card-body">
                                 <?php
+                                    require_once '../assets/php/util/get-name.php';
                                     echo "
                                     <form role='form' class='text-start' action='../assets/php/change-profile.php' method='post'>
                                         <div class='input-group input-group-outline my-3'>
-                                            <label class='form-label'>Name</label>
+                                            <label class='form-label'>Name (" . $name . ")</label>
                                             <input name='name_change' id='name-input' class='form-control'>
                                         </div>
                                         <div class='input-group input-group-outline mb-3'>
-                                            <label class='form-label'>Username</label>
+                                            <label class='form-label'>Username (" . $username . ")</label>
                                             <input name='username_change' id='username-input' class='form-control'>
                                         </div>
                                         <div class='input-group input-group-outline mb-3'>
-                                            <label class='form-label'>Email</label>
+                                            <label class='form-label'>Email (" . $email . ")</label>
                                             <input name='email_change' id='email-input' class='form-control'>
                                         </div>
                                         <div class='text-center'>
