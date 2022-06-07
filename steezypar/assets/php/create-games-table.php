@@ -25,7 +25,7 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
       <td>
         <div class='d-flex px-2'>
           <div>
-            <img src='../assets/uploads/" . $profile_pic . "' class='avatar avatar-sm rounded-circle me-2' alt='game" . $event_id . "'>
+            <img src='../assets/img/landscapes/" . $profile_pic . "' class='avatar avatar-sm rounded-circle me-2' alt='game" . $event_id . "'>
           </div>
           <div class='my-auto'>
             <h6 class='mb-0 text-sm'>Game " . $game_no . "</h6>
