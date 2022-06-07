@@ -156,7 +156,7 @@ if (!isset($_SESSION["u_id"])) {
                                         <h6 class="mb-0">Profile Information</h6>
                                     </div>
                                     <div class="col-md-4 text-end">
-                                        <a href="javascript:;">
+                                        <a href="edit-profile.php">
                                             <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                                         </a>
                                     </div>
@@ -169,7 +169,7 @@ if (!isset($_SESSION["u_id"])) {
                                 <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
                                     <?php
-                                    require_once '../assets/php/util/get-handicap.php';
+                                        require_once '../assets/php/util/get-handicap.php';
                                         echo "<li class='list-group-item border-0 ps-0 pt-0 text-sm'><strong class='text-dark'>Full Name:</strong> &nbsp;" . $name . "</li>";
                                         echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Handicap:</strong> &nbsp;" . $handicap . "</li>";
                                         echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Email:</strong> &nbsp;" . $email . "</li>";
