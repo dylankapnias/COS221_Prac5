@@ -35,7 +35,7 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
         <td>
             <div class='avatar-group mt-2'>";
 
-    $sql1 = "SELECT p.player_id, c.name, c.pic_is_set FROM playerevents AS p NATURAL JOIN playercredentials AS c WHERE p.event_id = ?;";
+    $sql1 = "SELECT p.player_id, c.name, c.pic_is_set FROM playerEvents AS p NATURAL JOIN playercredentials AS c WHERE p.event_id = ?;";
     $stmt1 = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt1, $sql1);
