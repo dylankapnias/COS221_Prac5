@@ -204,13 +204,9 @@ if (!isset($_SESSION["u_id"])) {
                                 <form role="form" class="text-start" method="post">
                                     <div class="input-group input-group-outline my-3">
                                         <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Select Game<span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Game 1</a></li>
-                                                <li><a href="#">Game 2</a></li>
-                                                <li><a href="#">Game 3</a></li>
-                                                <li><a href="#">Game 4</a></li>
-                                            </ul>
+                                            <?php
+                                                require_once '../assets/php/create-game-selector.php'
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
@@ -234,7 +230,7 @@ if (!isset($_SESSION["u_id"])) {
                                         <input name="end_in" id="bogeys-input" class="form-control">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" name="add_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Score</button>
+                                        <button type="submit" name="capture_score" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Score</button>
                                     </div>
                                 </form>
                             </div>
