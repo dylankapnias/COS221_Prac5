@@ -130,7 +130,7 @@ session_start();
                   </thead>
                   <tbody>
                   <?php
-                    require_once '../assets/php/util/create-player-table.php';
+                    require_once '../assets/php/create-player-table.php';
                   ?>
                   </tbody>
                 </table>
@@ -147,7 +147,9 @@ session_start();
                 <h6 class="text-white text-capitalize ps-3">Games Table</h6>
               </div>
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Game</button>
+                    <form role="form" action="add-event.php" mehthod="post">
+                        <button type="submit" name="add_submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Game</button>
+                    </form>
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -166,7 +168,7 @@ session_start();
                   </thead>
                   <tbody>
                   <?php
-                    require_once '../assets/php/util/create-games-table.php';
+                    require_once '../assets/php/create-games-table.php';
                   ?>
                   </tbody>
                 </table>

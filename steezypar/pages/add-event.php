@@ -55,7 +55,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/profile.php">
+                <a class="nav-link text-white " href="profile.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="../pages/sign-in.php">
+                <a class="nav-link text-white " href="../assets/php/sign-out.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">logout</i>
                     </div>
@@ -122,21 +122,21 @@
                                 <form role="form" class="text-start">
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Location</label>
-                                        <input id="location-input" class="form-control">
+                                        <input name="location_in" id="location-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Start Date</label>
-                                        <input id="start-date-input" class="form-control">
+                                        <input name="start_in" id="start-date-input" class="form-control">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">End Date</label>
-                                        <input id="end-date-input" class="form-control">
+                                        <input name="end_in" id="end-date-input" class="form-control">
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Event</button>
+                                        <button type="submit" name="add_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Event</button>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Cancel</button>
+                                        <button type="submit" href="cancel_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Cancel</button>
                                     </div>
                                 </form>
                             </div>

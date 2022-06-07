@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db-conn.php';
+require_once 'util/db-conn.php';
 
 $sql = "SELECT * FROM eventStats";
 $stmt = mysqli_stmt_init($conn);
