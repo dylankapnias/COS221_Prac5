@@ -2,7 +2,7 @@
 
 require_once 'util/db-conn.php';
 
-$sql = "SELECT * FROM eventStats";
+$sql = "SELECT * FROM eventStats;";
 $stmt = mysqli_stmt_init($conn);
 
 mysqli_stmt_prepare($stmt, $sql);

@@ -60,7 +60,7 @@ if (!isset($_SESSION["u_id"])) {
             </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-                </li>
+            </li>
             <li class="nav-item">
                 <a class="nav-link text-white active bg-gradient-primary" href="profile.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -140,8 +140,8 @@ if (!isset($_SESSION["u_id"])) {
                     <form role="form" action="../assets/php/upload-profile.php" method="post" enctype="multipart/form-data">
                         <input type="file" name="profile_pic">
                         <?php
-                            require '../assets/php/util/get-pic.php';
-                            echo "<button type='submit' name='pic_submit' class='btn btn-outline-primary btn-sm mb-0'>" . ($pic  == 0 ? 'Upload ' : 'Change ') . "profile picture</button>";
+                        require '../assets/php/util/get-pic.php';
+                        echo "<button type='submit' name='pic_submit' class='btn btn-outline-primary btn-sm mb-0'>" . ($pic  == 0 ? 'Upload ' : 'Change ') . "profile picture</button>";
                         ?>
                     </form>
                 </div>
@@ -169,25 +169,78 @@ if (!isset($_SESSION["u_id"])) {
                                 <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
                                     <?php
-                                        require_once '../assets/php/util/get-handicap.php';
-                                        echo "<li class='list-group-item border-0 ps-0 pt-0 text-sm'><strong class='text-dark'>Full Name:</strong> &nbsp;" . $name . "</li>";
-                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Handicap:</strong> &nbsp;" . $handicap . "</li>";
-                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Email:</strong> &nbsp;" . $email . "</li>";
-                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Username:</strong> &nbsp;" . $username . "</li>";
-                                        echo "<li class='list-group-item border-0 ps-0 pb-0'>";
+                                    require_once '../assets/php/util/get-handicap.php';
+                                    echo "<li class='list-group-item border-0 ps-0 pt-0 text-sm'><strong class='text-dark'>Full Name:</strong> &nbsp;" . $name . "</li>";
+                                    echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Handicap:</strong> &nbsp;" . $handicap . "</li>";
+                                    echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Email:</strong> &nbsp;" . $email . "</li>";
+                                    echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Username:</strong> &nbsp;" . $username . "</li>";
+                                    echo "<li class='list-group-item border-0 ps-0 pb-0'>";
                                     ?>
-                                        <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                                        <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                            <i class="fab fa-facebook fa-lg"></i>
-                                        </a>
-                                        <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                            <i class="fab fa-twitter fa-lg"></i>
-                                        </a>
-                                        <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                            <i class="fab fa-instagram fa-lg"></i>
-                                        </a>
+                                    <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                                    <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                                        <i class="fab fa-facebook fa-lg"></i>
+                                    </a>
+                                    <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                                        <i class="fab fa-twitter fa-lg"></i>
+                                    </a>
+                                    <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                    </a>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-4">
+                        <div class="card card-plain h-100">
+                            <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                    <div class="col-md-8 d-flex align-items-center">
+                                        <h6 class="mb-0">Add Your Score</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form role="form" class="text-start" action="../assets/php/capture-score.php" method="post">
+                                    <div class="input-group input-group-outline my-3">
+                                        <div class="dropdown">
+                                            <?php
+                                                require_once '../assets/php/create-game-selector.php'
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Insert Score</label>
+                                        <input name="total_score" id="score-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Par</label>
+                                        <input name="total_par" id="par-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Birdies</label>
+                                        <input name="total_birdie" id="birdies-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Eagles</label>
+                                        <input name="total_eagle" id="eagles-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Bogeys</label>
+                                        <input name="total_bogey" id="bogeys-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Amount of Drives</label>
+                                        <input name="total_drive" id="drives-input" class="form-control">
+                                    </div>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label">Longest Drive</label>
+                                        <input name="total_distance" id="distance-input" class="form-control">
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" name="capture_score" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Score</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
