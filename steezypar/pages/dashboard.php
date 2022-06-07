@@ -259,7 +259,62 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                     </div>
                 </div>
             </div>
-
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100">
+                    <div class="card-header pb-0">
+                        <h6>Leaderboard</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="timeline timeline-one-side">
+                            <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                    <i class="material-icons text-success text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 1</h6>
+                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
+                                </div>
+                            </div>
+                            <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                    <i class="material-icons text-danger text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 2</h6>
+                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
+                                </div>
+                            </div>
+                            <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                    <i class="material-icons text-info text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 3</h6>
+                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
+                                </div>
+                            </div>
+                            <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                    <i class="material-icons text-warning text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 4</h6>
+                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
+                                </div>
+                            </div>
+                            <div class="timeline-block mb-3">
+                                <span class="timeline-step">
+                                    <i class="material-icons text-primary text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 5</h6>
+                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <footer class="footer py-4  ">
             <div class="container-fluid">
