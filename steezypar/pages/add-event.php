@@ -21,7 +21,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 </head>
-
 <body class="g-sidenav-show  bg-gray-200">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
@@ -104,10 +103,9 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
     <main class="main-content  mt-0">
-        <div class="page-header align-items-start min-vh-100" style="background-image: url('../assets/img/background/1.jfif');">
-            <span class="mask bg-gradient-dark opacity-6"></span>
+
+
             <div class="container my-auto">
                 <div class="row">
                     <div class="col-lg-4 col-md-8 col-12 mx-auto">
@@ -131,6 +129,114 @@
                                         <label class="form-label">End Date</label>
                                         <input name="end_in" id="end-date-input" class="form-control">
                                     </div>
+
+                                    <div class="card-body px-0 pb-2">
+                                        <div class="table-responsive p-0">
+                                            <table class="table align-items-center mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Player</th>
+                                                    <th class="text-secondary opacity-7">
+
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">John Michael</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user3">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">Laurent Perrier</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user4">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">Michael Levi</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user5">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">Richard Gran</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">Miriam Eric</h6>
+                                                            </div>
+                                                            <div class="form-check form-switch ps-0 ms-auto my-auto">
+                                                                <input class="form-check-input mt-1 ms-auto" type="checkbox" id="selectPlayer"">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                     <div class="text-center">
                                         <button type="submit" name="add_event" class="btn bg-gradient-primary w-100 my-4 mb-2">Add Event</button>
                                     </div>
@@ -143,9 +249,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
 
+    </main>
     <div class="container-fluid py-4">
         <footer class="footer py-4  ">
             <div class="container-fluid">
@@ -245,5 +350,4 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
-
 </html>
