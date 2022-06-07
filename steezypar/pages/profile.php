@@ -1,7 +1,10 @@
 <?php
 session_start();
-?>
 
+if (!isset($_SESSION["u_id"])) {
+    die("Please enter this page appropriately");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +131,7 @@ session_start();
                         <h5 class="mb-1">
                             <?php
                             require_once '../assets/php/util/get-name.php';
-                            echo $username;
+                            echo $name;
                             ?>
                         </h5>
                     </div>
@@ -165,11 +168,14 @@ session_start();
                                 </p>
                                 <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
-                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
-                                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Handicap:</strong> &nbsp; +7</li>
-                                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Username:</strong> &nbsp; amthompson</li>
-                                    <li class="list-group-item border-0 ps-0 pb-0">
+                                    <?php
+                                    require_once '../assets/php/util/get-handicap.php';
+                                        echo "<li class='list-group-item border-0 ps-0 pt-0 text-sm'><strong class='text-dark'>Full Name:</strong> &nbsp;" . $name . "</li>";
+                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Handicap:</strong> &nbsp;" . $handicap . "</li>";
+                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Email:</strong> &nbsp;" . $email . "</li>";
+                                        echo "<li class='list-group-item border-0 ps-0 text-sm'><strong class='text-dark'>Username:</strong> &nbsp;" . $username . "</li>";
+                                        echo "<li class='list-group-item border-0 ps-0 pb-0'>";
+                                    ?>
                                         <strong class="text-dark text-sm">Social:</strong> &nbsp;
                                         <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
                                             <i class="fab fa-facebook fa-lg"></i>
