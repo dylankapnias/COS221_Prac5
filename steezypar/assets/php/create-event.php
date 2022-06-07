@@ -67,7 +67,7 @@ mysqli_stmt_prepare($stmt, $sql);
 mysqli_stmt_bind_param($stmt, "ssss", $next_id, $start, $end, $location);
 mysqli_stmt_execute($stmt);
 
-$sql = "INSERT INTO playerevents (player_id, event_id, role_id) VALUES (?, ?, ?);";
+$sql = "INSERT INTO playerEvents (player_id, event_id, role_id) VALUES (?, ?, ?);";
 
 for ($i = 0; $i < count($add_arr); $i++) {
     $player_id = $add_arr[$i];
