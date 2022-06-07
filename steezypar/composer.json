@@ -1,0 +1,6 @@
+{
+    "require": {
+        "webmozart/assert": "^1.11",
+        "egulias/email-validator": "^3.2"
+    }
+}
