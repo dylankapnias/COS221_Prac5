@@ -121,8 +121,11 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                             <i class="material-icons opacity-10">weekend</i>
                         </div>
                         <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Games</p>
-                            <h4 class="mb-0">18 Holes</h4>
+                            <p class="text-sm mb-0 text-capitalize">Total Games</p>
+                            <?php
+                                require_once '../assets/php/util/get-total-games.php';
+                                echo "<h4 class='mb-0'>" . $total . " Games</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -138,8 +141,11 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                             <i class="material-icons opacity-10">person</i>
                         </div>
                         <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Players</p>
-                            <h4 class="mb-0">32</h4>
+                            <p class="text-sm mb-0 text-capitalize">Total Players</p>
+                            <?php
+                                require_once '../assets/php/util/get-total-players.php';
+                                echo "<h4 class='mb-0'>" . $total . " Players</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -156,7 +162,10 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Tournament Progress</p>
-                            <h4 class="mb-0">43%</h4>
+                            <?php
+                                require_once '../assets/php/util/get-total-games.php';
+                                echo "<h4 class='mb-0'>" . $percent . "%</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
