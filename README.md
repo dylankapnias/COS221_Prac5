@@ -6,4 +6,5 @@
 ```PHP
 $DylanKapnias = new Student("u18108467");
 $MariePretorius = new Student("u21565342");
+$LesediKekana = new Student("u20486473");
 ```
