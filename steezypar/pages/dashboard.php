@@ -242,7 +242,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                                 </thead>
                                 <tbody>
                                 <?php
-                                require_once '../assets/php/create-avatars-table.php';
+                                    require_once '../assets/php/create-avatars-table.php';
                                 ?>
                                 </tbody>
                             </table>
@@ -251,60 +251,60 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100">
-                    <div class="card-header pb-0">
-                        <h6>Leaderboard</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="timeline timeline-one-side">
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="material-icons text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 1</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
-                                </div>
+                <form role="form" action="dashboard.php" method="post">
+                    <div class="card h-100">
+                        <div class="col-auto d-flex justify-content-between card-header pb-0">
+                            <h3>Leaderboard</h3>
+                            <div class="dropdown">
+                                <?php
+                                    require_once '../assets/php/create-leaderboard-selector.php'
+                                ?>
                             </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="material-icons text-danger text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 2</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="material-icons text-info text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 3</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="material-icons text-warning text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 4</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="material-icons text-primary text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Player 5</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">x points</p>
-                                </div>
+                            <button type='submit' name='leader_submit' class='btn btn-outline-primary'>Filter</button>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="timeline timeline-one-side">
+                                <?php
+                                    if (count($_POST) != 0) {
+                                        require_once '../assets/php/util/db-conn.php';
+                                        $event_id = $_POST["game"];
+
+                                        $sql = "SELECT name, points FROM playereventstats INNER JOIN playercredentials
+                                                ON playereventstats.player_id = playercredentials.player_id WHERE event_id = ? ORDER BY position;";
+                                        $stmt = mysqli_stmt_init($conn);
+
+                                        mysqli_stmt_prepare($stmt, $sql);
+                                        mysqli_stmt_bind_param($stmt, "s", $event_id);
+                                        mysqli_stmt_execute($stmt);
+
+                                        $resultData = mysqli_stmt_get_result($stmt);
+
+                                        for ($i = 0; $i < $resultData->num_rows; $i++) {
+                                            if ($i == 5) {
+                                                break;
+                                            }
+                                            $row = mysqli_fetch_assoc($resultData);
+
+                                            $name = $row["name"];
+                                            $score = $row["points"];
+
+                                            echo "
+                                            <div class='timeline-block mb-3'>
+                                                <span class='timeline-step''>
+                                                    <i class='material-icons text-success text-gradient'></i>
+                                                </span>
+                                                <div class='timeline-content'>
+                                                    <h6 class='text-dark text-sm font-weight-bold mb-0'>" . $name . "</h6>
+                                                    <p class='text-secondary font-weight-bold text-xs mt-1 mb-0'>" . $score . " points</p>
+                                                </div>
+                                            </div>";
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <footer class="footer py-4  ">
