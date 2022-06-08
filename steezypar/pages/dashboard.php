@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-/*
 if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
     die("Please enter this page appropriately");
 }
-*/
 ?>
 
 <!DOCTYPE html>
@@ -123,8 +121,11 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                             <i class="material-icons opacity-10">weekend</i>
                         </div>
                         <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Games</p>
-                            <h4 class="mb-0">18 Holes</h4>
+                            <p class="text-sm mb-0 text-capitalize">Total Games</p>
+                            <?php
+                                require_once '../assets/php/util/get-total-games.php';
+                                echo "<h4 class='mb-0'>" . $total . " Games</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -140,8 +141,11 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                             <i class="material-icons opacity-10">person</i>
                         </div>
                         <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Players</p>
-                            <h4 class="mb-0">32</h4>
+                            <p class="text-sm mb-0 text-capitalize">Total Players</p>
+                            <?php
+                                require_once '../assets/php/util/get-total-players.php';
+                                echo "<h4 class='mb-0'>" . $total . " Players</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -158,7 +162,10 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Tournament Progress</p>
-                            <h4 class="mb-0">43%</h4>
+                            <?php
+                                require_once '../assets/php/util/get-total-games.php';
+                                echo "<h4 class='mb-0'>" . $percent . "%</h4>";
+                            ?>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -179,13 +186,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0 ">Time on the Green</h6>
-                        <p class="text-sm "></p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm"> updated yesterday </p>
-                        </div>
+                        <h6 class="mb-0 ">Recent Game Averages</h6>
                     </div>
                 </div>
             </div>
@@ -199,13 +200,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0 "> Daily Holes </h6>
-                        <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in holes today </p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm"> updated 4 min ago </p>
-                        </div>
+                        <h6 class="mb-0 ">Top 8 Longest Drives</h6>
                     </div>
                 </div>
             </div>
@@ -219,13 +214,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0 ">Completed Games</h6>
-                        <p class="text-sm ">Last Tournament Performance</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
+                        <h6 class="mb-0 ">Top 8 Handicaps</h6>
                     </div>
                 </div>
             </div>
@@ -248,12 +237,11 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Organisations</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Average Score</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                require_once '../assets/php/create-avatars-table.php';
+                                    require_once '../assets/php/create-avatars-table.php';
                                 ?>
                                 </tbody>
                             </table>
@@ -261,9 +249,62 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                     </div>
                 </div>
             </div>
-            <?php
-                require_once '../assets/php/create-leaderboard.php'
-            ?>
+            <div class="col-lg-4 col-md-6">
+                <form role="form" action="dashboard.php" method="post">
+                    <div class="card h-100">
+                        <div class="col-auto d-flex justify-content-between card-header pb-0">
+                            <h3>Leaderboard</h3>
+                            <div class="dropdown">
+                                <?php
+                                    require_once '../assets/php/create-leaderboard-selector.php'
+                                ?>
+                            </div>
+                            <button type='submit' name='leader_submit' class='btn btn-outline-primary'>Filter</button>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="timeline timeline-one-side">
+                                <?php
+                                    if (count($_POST) != 0) {
+                                        require_once '../assets/php/util/db-conn.php';
+                                        $event_id = $_POST["game"];
+
+                                        $sql = "SELECT name, points FROM playereventstats INNER JOIN playercredentials
+                                                ON playereventstats.player_id = playercredentials.player_id WHERE event_id = ? ORDER BY position;";
+                                        $stmt = mysqli_stmt_init($conn);
+
+                                        mysqli_stmt_prepare($stmt, $sql);
+                                        mysqli_stmt_bind_param($stmt, "s", $event_id);
+                                        mysqli_stmt_execute($stmt);
+
+                                        $resultData = mysqli_stmt_get_result($stmt);
+
+                                        for ($i = 0; $i < $resultData->num_rows; $i++) {
+                                            if ($i == 5) {
+                                                break;
+                                            }
+                                            $row = mysqli_fetch_assoc($resultData);
+
+                                            $name = $row["name"];
+                                            $score = $row["points"];
+
+                                            echo "
+                                            <div class='timeline-block mb-3'>
+                                                <span class='timeline-step''>
+                                                    <i class='material-icons text-success text-gradient'></i>
+                                                </span>
+                                                <div class='timeline-content'>
+                                                    <h6 class='text-dark text-sm font-weight-bold mb-0'>" . $name . "</h6>
+                                                    <p class='text-secondary font-weight-bold text-xs mt-1 mb-0'>" . $score . " points</p>
+                                                </div>
+                                            </div>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <footer class="footer py-4  ">
             <div class="container-fluid">
@@ -351,188 +392,140 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
 <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="../assets/js/plugins/chartjs.min.js"></script>
 <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+    <?php
+        require_once '../assets/php/util/get-recent-games.php';
+        $labels = "[";
+        $data = "[";
 
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
-            datasets: [{
-                label: "Hours",
-                tension: 0.4,
-                borderWidth: 0,
-                borderRadius: 4,
-                borderSkipped: false,
-                backgroundColor: "rgba(255, 255, 255, .8)",
-                data: [50, 20, 10, 22, 50, 10, 40],
-                maxBarThickness: 6
-            }, ],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false,
-                }
+        foreach ($averages as $a => $a_val) {
+            $labels .= "'" . $a . "'";
+            $data .= "'" . $a_val . "'";
+            if ($a == $last) {
+                $labels .= "]";
+                $data .= "]";
+            } else {
+                $labels .= ", ";
+                $data .= ", ";
+            }
+        }
+        echo "
+        var ctx = document.getElementById('chart-bars').getContext('2d');
+    
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: "; echo $labels; echo ",
+                datasets: [{
+                    label: 'Score',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: 'rgba(255, 255, 255, .8)',
+                    data: "; echo $data; echo ",
+                    maxBarThickness: 6
+                }, ],
             },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
-            scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                        borderDash: [5, 5],
-                        color: 'rgba(255, 255, 255, .2)'
-                    },
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 500,
-                        beginAtZero: true,
-                        padding: 10,
-                        font: {
-                            size: 14,
-                            weight: 300,
-                            family: "Roboto",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                        color: "#fff"
-                    },
-                },
-                x: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                        borderDash: [5, 5],
-                        color: 'rgba(255, 255, 255, .2)'
-                    },
-                    ticks: {
-                        display: true,
-                        color: '#f8f9fa',
-                        padding: 10,
-                        font: {
-                            size: 14,
-                            weight: 300,
-                            family: "Roboto",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-            },
-        },
-    });
-
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    new Chart(ctx2, {
-        type: "line",
-        data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
-            datasets: [{
-                label: "Total holes",
-                tension: 0,
-                borderWidth: 0,
-                pointRadius: 5,
-                pointBackgroundColor: "rgba(255, 255, 255, .8)",
-                pointBorderColor: "transparent",
-                borderColor: "rgba(255, 255, 255, .8)",
-                borderColor: "rgba(255, 255, 255, .8)",
-                borderWidth: 4,
-                backgroundColor: "transparent",
-                fill: true,
-                data: [50, 40, 300, 320, 500, 350, 200],
-                maxBarThickness: 6
-
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false,
-                }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
-            scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                        borderDash: [5, 5],
-                        color: 'rgba(255, 255, 255, .2)'
-                    },
-                    ticks: {
-                        display: true,
-                        color: '#f8f9fa',
-                        padding: 10,
-                        font: {
-                            size: 14,
-                            weight: 300,
-                            family: "Roboto",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-                x: {
-                    grid: {
-                        drawBorder: false,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
                         display: false,
-                        drawOnChartArea: false,
-                        drawTicks: false,
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        color: '#f8f9fa',
-                        padding: 10,
-                        font: {
-                            size: 14,
-                            weight: 300,
-                            family: "Roboto",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
                     }
                 },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: 'Roboto',
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: '#fff'
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: 'Roboto',
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
             },
-        },
-    });
+        });
+    ";
+    ?>
 
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+    <?php
+        require_once '../assets/php/util/get-longest-drives.php';
+        $labels = "[";
+        $data = "[";
 
-    new Chart(ctx3, {
-        type: "line",
+        for ($i = 0; $i < 8; $i++) {
+            $labels .= "\"" . $players[$i] . "\"";
+            $data .= "" . $drives[$i] . "";
+            if ($i == 7) {
+                $labels .= "]";
+                $data .= "]";
+            } else {
+                $labels .= ", ";
+                $data .= ", ";
+            }
+        }
+        echo "
+        var ctx2 = document.getElementById('chart-line').getContext('2d');
+
+        new Chart(ctx2, {
+        type: 'line',
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: "; echo $labels; echo ",
             datasets: [{
-                label: "Games played",
+                label: 'Distance',
                 tension: 0,
                 borderWidth: 0,
                 pointRadius: 5,
-                pointBackgroundColor: "rgba(255, 255, 255, .8)",
-                pointBorderColor: "transparent",
-                borderColor: "rgba(255, 255, 255, .8)",
+                pointBackgroundColor: 'rgba(255, 255, 255, .8)',
+                pointBorderColor: 'transparent',
+                borderColor: 'rgba(255, 255, 255, .8)',
                 borderWidth: 4,
-                backgroundColor: "transparent",
+                backgroundColor: 'transparent',
                 fill: true,
-                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                data: "; echo $data; echo ",
                 maxBarThickness: 6
 
             }],
@@ -566,7 +559,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         font: {
                             size: 14,
                             weight: 300,
-                            family: "Roboto",
+                            family: 'Roboto',
                             style: 'normal',
                             lineHeight: 2
                         },
@@ -587,7 +580,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         font: {
                             size: 14,
                             weight: 300,
-                            family: "Roboto",
+                            family: 'Roboto',
                             style: 'normal',
                             lineHeight: 2
                         },
@@ -596,6 +589,109 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
             },
         },
     });
+    ";
+    ?>
+
+    <?php
+    require_once '../assets/php/util/get-top-handicaps.php';
+    $labels = "[";
+    $data = "[";
+
+    for ($i = 0; $i < 8; $i++) {
+        $labels .= "\"" . $players[$i] . "\"";
+        $data .= "" . $handicaps[$i] . "";
+        if ($i == 7) {
+            $labels .= "]";
+            $data .= "]";
+        } else {
+            $labels .= ", ";
+            $data .= ", ";
+        }
+    }
+    echo "
+        var ctx3 = document.getElementById('chart-line-tasks').getContext('2d');
+
+        new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: "; echo $labels; echo ",
+            datasets: [{
+                label: 'Handicap',
+                tension: 0,
+                borderWidth: 0,
+                pointRadius: 5,
+                pointBackgroundColor: 'rgba(255, 255, 255, .8)',
+                pointBorderColor: 'transparent',
+                borderColor: 'rgba(255, 255, 255, .8)',
+                borderWidth: 4,
+                backgroundColor: 'transparent',
+                fill: true,
+                data: "; echo $data; echo ",
+                maxBarThickness: 6
+
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#f8f9fa',
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: 'Roboto',
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: 'Roboto',
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
+    ";
+    ?>
 </script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
