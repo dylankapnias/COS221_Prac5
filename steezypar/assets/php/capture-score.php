@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'util/db-conn.php';
+require __DIR__ . '/../../vendor/autoload.php';
+use Webmozart\Assert\Assert;
 
 if (!isset($_POST["capture_score"])) {
     die("Please enter this page appropriately");
@@ -8,6 +10,17 @@ if (!isset($_POST["capture_score"])) {
 
 if ($_POST["game"] == "select") {
     die("Please select a game to insert scores into");
+}
+
+try {
+    Assert::integerish($_POST["total_score"], "Score should be an integer value, you filled in %s");
+    Assert::integerish($_POST["total_par"], "Par should be an integer value, you filled in %s");
+    Assert::integerish($_POST["total_eagle"], "eagles should be an integer value, you filled in %s");
+    Assert::integerish($_POST["total_birdie"], "Birdies should be an integer value, you filled in %s");
+    Assert::integerish($_POST["total_bogey"], "Bogeys should be an integer value, you filled in %s");
+    Assert::integerish($_POST["total_drive"], "Drive Distance should be an integer value, you filled in %s");
+} catch (InvalidArgumentException $e) {
+    die($e->getMessage());
 }
 
 $player_id = $_SESSION["u_id"];
