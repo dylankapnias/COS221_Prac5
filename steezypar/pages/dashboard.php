@@ -214,7 +214,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0 ">Completed Games</h6>
+                        <h6 class="mb-0 ">Top 8 Handicaps</h6>
                     </div>
                 </div>
             </div>
@@ -593,24 +593,41 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
     ";
     ?>
 
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+    <?php
+    require_once '../assets/php/util/get-top-handicaps.php';
+    $labels = "[";
+    $data = "[";
 
-    new Chart(ctx3, {
-        type: "line",
+    for ($i = 0; $i < 8; $i++) {
+        $labels .= "\"" . $players[$i] . "\"";
+        $data .= "" . $handicaps[$i] . "";
+        if ($i == 7) {
+            $labels .= "]";
+            $data .= "]";
+        } else {
+            $labels .= ", ";
+            $data .= ", ";
+        }
+    }
+    echo "
+        var ctx3 = document.getElementById('chart-line-tasks').getContext('2d');
+
+        new Chart(ctx3, {
+        type: 'line',
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: "; echo $labels; echo ",
             datasets: [{
-                label: "Games played",
+                label: 'Handicap',
                 tension: 0,
                 borderWidth: 0,
                 pointRadius: 5,
-                pointBackgroundColor: "rgba(255, 255, 255, .8)",
-                pointBorderColor: "transparent",
-                borderColor: "rgba(255, 255, 255, .8)",
+                pointBackgroundColor: 'rgba(255, 255, 255, .8)',
+                pointBorderColor: 'transparent',
+                borderColor: 'rgba(255, 255, 255, .8)',
                 borderWidth: 4,
-                backgroundColor: "transparent",
+                backgroundColor: 'transparent',
                 fill: true,
-                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                data: "; echo $data; echo ",
                 maxBarThickness: 6
 
             }],
@@ -644,7 +661,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         font: {
                             size: 14,
                             weight: 300,
-                            family: "Roboto",
+                            family: 'Roboto',
                             style: 'normal',
                             lineHeight: 2
                         },
@@ -665,7 +682,7 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
                         font: {
                             size: 14,
                             weight: 300,
-                            family: "Roboto",
+                            family: 'Roboto',
                             style: 'normal',
                             lineHeight: 2
                         },
@@ -674,6 +691,8 @@ if (!isset($_SESSION["u_id"]) && (!$_SESSION["s_in"])) {
             },
         },
     });
+    ";
+    ?>
 </script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
