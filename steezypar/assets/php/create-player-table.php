@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once 'util/db-conn.php';
 
@@ -12,6 +13,9 @@ $resultData = mysqli_stmt_get_result($stmt);
 
 for ($i = 0; $i < $resultData->num_rows; $i++) {
     $profile_pic = 'default';
+    $type = 'Player';
+    $status = 'Offline';
+    $status_type = 'secondary';
     $row = mysqli_fetch_assoc($resultData);
 
     $player_id = $row["player_id"];
@@ -21,6 +25,13 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
     $pic_is_set = $row["pic_is_set"];
     if ($pic_is_set == 1) {
         $profile_pic = $player_id;
+    }
+    if ($player_id == 3938) {
+        $type = "Manager";
+    }
+    if ($player_id == $_SESSION["u_id"]) {
+        $status_type = 'success';
+        $status = 'Online';
     }
 
     echo "
@@ -37,19 +48,14 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
         </div>
       </td>
       <td>
-        <p class='text-xs font-weight-bold mb-0'>Manager</p>
-        <p class='text-xs text-secondary mb-0'>Organization</p>
+        <p class='text-xs font-weight-bold mb-0'>" . $type . "</p>
+        <p class='text-xs text-secondary mb-0'>SwingSteezy</p>
       </td>
       <td class='align-middle text-center text-sm'>
-        <span class='badge badge-sm bg-gradient-success'>Online</span>
+        <span class='badge badge-sm bg-gradient-" . $status_type . "'>" . $status . "</span>
       </td>
       <td class='align-middle text-center'>
         <span class='text-secondary text-xs font-weight-bold'>23/04/18</span>
-      </td>
-      <td class='align-middle'>
-        <a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>
-            Edit
-        </a>
       </td>
     </tr>";
 }
