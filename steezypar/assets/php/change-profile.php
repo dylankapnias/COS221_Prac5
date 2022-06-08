@@ -2,6 +2,8 @@
 session_start();
 
 require_once 'util/db-conn.php';
+require __DIR__ . '/../../vendor/autoload.php';
+use Webmozart\Assert\Assert;
 
 if (isset($_POST["cancel_change"])) {
     header("location: ../../pages/profile.php");
@@ -34,7 +36,14 @@ if ($bio != '') {
     $amount++;
 }
 
+try {
+    Assert::greaterThan($amount, 0, "Please fill at least one field, you filled in %s");
+} catch (InvalidArgumentException $e) {
+    die($e->getMessage());
+}
+
 $amount--;
+
 
 $rel = array("name", "username", "email", "bio");
 $index = 0;
@@ -66,6 +75,11 @@ if ($username != '') {
 $index++;
 
 if ($email != '') {
+    try {
+        Assert::email($email, "Email was inserted incorrectly, you gave this %s");
+    } catch (InvalidArgumentException $e) {
+        die($e->getMessage());
+    }
     $insert .= $rel[$index] . " = '" . $email . "'";
     if ($count != $amount && $index != $total) {
         $insert .= ", ";
