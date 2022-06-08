@@ -163,10 +163,6 @@ if (!isset($_SESSION["u_id"])) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="text-sm">
-                                    Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
-                                </p>
-                                <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
                                     <?php
                                     require_once '../assets/php/util/get-handicap.php';
