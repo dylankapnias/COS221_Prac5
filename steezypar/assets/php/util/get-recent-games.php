@@ -1,8 +1,6 @@
 <?php
 require_once 'db-conn.php';
 
-$c_id = $_SESSION["u_id"];
-
 $sql = "SELECT eventStats.event_id, SUM(average) AS Average, eventStats.end_date 
         FROM eventStats 
         INNER JOIN playereventstats 
@@ -29,14 +27,3 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
 end($averages);
 $last = key($averages);
 reset($averages);
-//$str = "[";
-//
-//foreach ($averages as $a => $a_val) {
-//    $str .= "'" . $a . "'";
-//    if ($a == $last) {
-//        $str .= "]";
-//    } else {
-//        $str .= ", ";
-//    }
-//}
-//print_r($str);
