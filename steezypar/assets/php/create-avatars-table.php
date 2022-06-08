@@ -76,18 +76,5 @@ for ($i = 0; $i < $resultData->num_rows; $i++) {
         <td class='align-middle text-center text-sm'>
             <span class='text-xs font-weight-bold'> " . $average . "</span>
         </td>";
-    echo "
-        <td class='align-middle'>
-            <div class='progress-wrapper w-75 mx-auto'>
-                <div class='progress-info'>
-                    <div class='progress-percentage'>
-                        <span class='text-xs font-weight-bold'>60%</span>
-                    </div>
-                </div>
-                <div class='progress'>
-                    <div class='progress-bar bg-gradient-info w-60' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100'></div>
-                </div>
-            </div>
-        </td>
-    </tr>";
+    echo "</tr>";
 }
