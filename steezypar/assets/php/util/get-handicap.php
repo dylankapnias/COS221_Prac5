@@ -3,7 +3,7 @@ require_once 'db-conn.php';
 
 $c_id = $_SESSION["u_id"];
 
-$sql = "SELECT handicap FROM playerstats WHERE player_id = ?;";
+$sql = "SELECT handicap FROM playerStats WHERE player_id = ?;";
 $stmt = mysqli_stmt_init($conn);
 
 mysqli_stmt_prepare($stmt, $sql);
